@@ -49,7 +49,7 @@ const globalStyle = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    margin: 12,
+    marginVertical: 12,
   },
   link: {
     color: linkBlue,
