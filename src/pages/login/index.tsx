@@ -1,3 +1,4 @@
+import React, { useEffect, useState, useContext } from "react";
 import Input from "@/components/input";
 import globalStyle from "@/styles/common/global";
 import { mainColor } from "@/styles/theme/colors";
@@ -6,7 +7,7 @@ import texts from "@/styles/theme/texts";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link } from "@react-navigation/native";
 import { Formik } from "formik";
-import React, { useEffect, useState } from "react";
+import { UserContext } from "@/context/userContext";
 import {
   Dimensions,
   Image,
@@ -15,9 +16,9 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
-
 function Login({ navigation }) {
   const [loginState, setLoginState] = useState<boolean | string>("empty");
+  const context = useContext(UserContext);
   useEffect(() => {
     if (loginState === true) {
       navigation.replace("booking", { screen: "searchTrip" });
@@ -65,6 +66,7 @@ function Login({ navigation }) {
                   item.password === values.password
                 ) {
                   result = true;
+                  context.setUser(item);
                 }
               });
               setLoginState(result);
