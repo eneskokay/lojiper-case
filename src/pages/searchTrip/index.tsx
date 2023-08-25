@@ -10,7 +10,6 @@ import CalendarPicker from "react-native-calendar-picker";
 import Toast from "react-native-simple-toast";
 import { trips } from "@/constants/trips";
 import { DateRangeTypes } from "./types";
-import { BookingContext } from "@/context/bookingContext";
 
 function SearchTrip({ navigation }) {
   const [radioButtons, setRadioButtons] = useState([
@@ -19,25 +18,11 @@ function SearchTrip({ navigation }) {
   ]);
   const [calenderState, setCalenderState] = useState(false);
   const [dateRange, setDateRange] = useState<DateRangeTypes>({});
-  const [availableTrips, setAvailableTrips] = useState<object[]>([]);
   const [errorState, setErrorState] = useState(false);
-  const [navigateState, setNavigateState] = useState(false);
-  const context = useContext(BookingContext);
   useEffect(() => {
     setDateRange({});
     setCalenderState(false);
   }, [radioButtons]);
-
-  useEffect(() => {
-    if (navigateState !== false) {
-      if (availableTrips.length > 0) {
-        context.setAvailableTrips(availableTrips);
-        navigation.navigate("listTrip");
-      } else {
-        setErrorState(true);
-      }
-    }
-  }, [navigateState]);
 
   return (
     <View
@@ -61,7 +46,8 @@ function SearchTrip({ navigation }) {
             values.from.length > 0 &&
             values.to.length > 0
           ) {
-            await trips.forEach((item) => {
+            const availableTrips = [];
+            trips.forEach((item) => {
               if (
                 item.from === values.from &&
                 item.to === values.to &&
@@ -73,10 +59,15 @@ function SearchTrip({ navigation }) {
                     new Date(dateRange.selectedEndDate).getTime()
                   : true)
               ) {
-                setAvailableTrips([...availableTrips, item]);
+                availableTrips.push(item);
               }
             });
-            setNavigateState(true);
+            if (availableTrips.length > 0) {
+              console.log(availableTrips);
+              navigation.navigate("listTrips", { availableTrips });
+            } else {
+              setErrorState(true);
+            }
           } else {
             Toast.show("Lütfen Tüm Bilgileri Doldurun!", Toast.LONG);
           }

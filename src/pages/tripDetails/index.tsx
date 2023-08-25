@@ -3,7 +3,6 @@ import globalStyle from "@/styles/common/global";
 
 function TripDetails({ route, navigation }) {
   const id = route.params.id;
-  console.log(id);
   return (
     <View
       style={[

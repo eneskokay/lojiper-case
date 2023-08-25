@@ -1,5 +1,6 @@
-import ListTrip from "@/pages/listTrip";
+import ListTrips from "@/pages/listTrips";
 import SearchTrip from "@/pages/searchTrip";
+import TripDetails from "@/pages/tripDetails";
 import { mainColor } from "@/styles/theme/colors";
 import texts from "@/styles/theme/texts";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -21,9 +22,14 @@ export default function BookingNavigation() {
         options={{ title: "Sefer Ara" }}
       />
       <Stack.Screen
-        name="listTrip"
-        component={ListTrip}
+        name="listTrips"
+        component={ListTrips}
         options={{ title: "Uygun Seferler" }}
+      />
+      <Stack.Screen
+        name="tripDetails"
+        component={TripDetails}
+        options={{ title: "Sefer Detayları" }}
       />
     </Stack.Navigator>
   );
