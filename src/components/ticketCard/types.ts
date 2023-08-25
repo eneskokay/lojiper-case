@@ -1,15 +1,21 @@
-interface itemType {
+interface item {
   from: string;
   to: string;
   tripType: string;
   startDate: Date;
+  startTime: string;
   endDate: Date;
+  endTime: string;
   id: number;
   manPassenger: number;
   womanPassenger: number;
   emptySeats: number;
-  startTime: string;
-  endTime: string;
   price: number;
 }
-export { itemType };
+
+interface Props {
+  item: item;
+  clickable: boolean;
+  navigationFunc?: () => void;
+}
+export default Props;

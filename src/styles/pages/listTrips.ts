@@ -15,6 +15,9 @@ const listTripStyle = StyleSheet.create({
     paddingVertical: 6,
     paddingHorizontal: 12,
     width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   cardBottom: {
     paddingVertical: 6,

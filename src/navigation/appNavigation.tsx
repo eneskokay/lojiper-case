@@ -10,7 +10,7 @@ export default function AppNavigation() {
     <NavigationContainer>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
-        initialRouteName={"booking"}
+        initialRouteName={"auth"}
       >
         <Stack.Screen name="auth" component={AuthNavigation} />
         <Stack.Screen name="booking" component={BookingNavigation} />

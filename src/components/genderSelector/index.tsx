@@ -6,22 +6,26 @@ import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import Icon from "../icon";
 
-function GenderSelector({ value, setValue }) {
+function GenderSelector({ value, setValue, title }: Props) {
   return (
     <View style={styles.gendersContainer}>
-      <Text
-        style={[
-          texts.text_400,
-          {
-            color: "gray",
-            marginBottom: 5,
-          },
-        ]}
-      >
-        Cinsiyet Seçimi
-      </Text>
+      {title && (
+        <Text
+          style={[
+            texts.text_400,
+            {
+              color: "gray",
+              marginBottom: 5,
+            },
+          ]}
+        >
+          {title}
+        </Text>
+      )}
+
       <View style={styles.genders}>
         <TouchableOpacity
+          disabled={setValue ? false : true}
           style={[
             styles.genderSelector,
             shadow.black,
@@ -46,6 +50,7 @@ function GenderSelector({ value, setValue }) {
               backgroundColor: mainColor,
             },
           ]}
+          disabled={setValue ? false : true}
           onPress={() => setValue("gender", "female")}
         >
           <Icon
