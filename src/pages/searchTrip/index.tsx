@@ -63,7 +63,6 @@ function SearchTrip({ navigation }) {
               }
             });
             if (availableTrips.length > 0) {
-              console.log(availableTrips);
               navigation.navigate("listTrips", { availableTrips });
             } else {
               setErrorState(true);

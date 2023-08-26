@@ -1,5 +1,4 @@
 import React from "react";
-import { View } from "react-native";
 import { G, Path, Svg } from "react-native-svg";
 import Props from "./types";
 
