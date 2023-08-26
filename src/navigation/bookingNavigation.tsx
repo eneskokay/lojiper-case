@@ -1,5 +1,7 @@
 import ListTrips from "@/pages/listTrips";
+import Payment from "@/pages/payment/payment";
 import SearchTrip from "@/pages/searchTrip";
+import Success from "@/pages/success";
 import TripDetails from "@/pages/tripDetails";
 import { mainColor } from "@/styles/theme/colors";
 import texts from "@/styles/theme/texts";
@@ -30,6 +32,16 @@ export default function BookingNavigation() {
         name="tripDetails"
         component={TripDetails}
         options={{ title: "Sefer Detayları" }}
+      />
+      <Stack.Screen
+        name="payment"
+        component={Payment}
+        options={{ title: "Ödeme" }}
+      />
+      <Stack.Screen
+        name="success"
+        component={Success}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

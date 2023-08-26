@@ -6,4 +6,5 @@ export default interface Props extends TextInputProps {
   width?: DimensionValue;
   height?: DimensionValue;
   error?: boolean;
+  mask?: any;
 }

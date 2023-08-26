@@ -54,7 +54,7 @@ function TripDetails({ route, navigation }) {
         });
       });
       if (control && !sameClient) {
-        Toast.show("Bu Koltuğu Seçemezsiniz!", Toast.LONG);
+        Toast.show("Bu Koltuğu Seçemezsiniz!", Toast.SHORT);
       } else {
         setSeatsData((value) => {
           const newValue = { ...seatsData };
@@ -80,7 +80,7 @@ function TripDetails({ route, navigation }) {
         setInputIdentityNo("");
       }
     } else {
-      Toast.show(error, Toast.LONG);
+      Toast.show(error, Toast.SHORT);
     }
   };
   useEffect(() => {
@@ -212,8 +212,14 @@ function TripDetails({ route, navigation }) {
         <Text style={[texts.text_400, { color: "white" }]}>
           Toplam Tutar: {totalPrice}TL
         </Text>
+
         <TouchableOpacity
           style={[globalStyle.button, { backgroundColor: "white" }]}
+          onPress={() => {
+            if (totalPrice > 0) {
+              navigation.navigate("payment", { totalPrice });
+            }
+          }}
         >
           <Text style={[texts.text_400, { color: mainColor }]}>Ödeme Yap</Text>
         </TouchableOpacity>

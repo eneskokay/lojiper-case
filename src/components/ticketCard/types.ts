@@ -4,8 +4,8 @@ interface item {
   tripType: string;
   startDate: Date;
   startTime: string;
-  endDate: Date;
-  endTime: string;
+  endDate?: Date;
+  endTime?: string;
   id: number;
   manPassenger: number;
   womanPassenger: number;

@@ -1,5 +1,5 @@
 import Input from "@/components/input";
-import validationSchema from "@/constants/yupSchema";
+import { registerSchema } from "@/constants/yupSchemas";
 import globalStyle from "@/styles/common/global";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Formik } from "formik";
@@ -14,6 +14,7 @@ import {
 } from "react-native";
 import GenderSelector from "@/components/genderSelector";
 import texts from "@/styles/theme/texts";
+import { Masks } from "react-native-mask-input";
 
 function Register({ navigation }) {
   return (
@@ -38,7 +39,7 @@ function Register({ navigation }) {
               passwordConfirm: "",
               gender: "",
             }}
-            validationSchema={validationSchema}
+            validationSchema={registerSchema}
             onSubmit={async (values, { setFieldError }) => {
               if (values.gender.length === 0) {
                 setFieldError("gender", "*Bu alan boş Bırakılamaz!");
@@ -138,7 +139,8 @@ function Register({ navigation }) {
                     value={values.bornDate}
                     onChangeText={handleChange("bornDate")}
                     onBlur={handleBlur("bornDate")}
-                    type="date"
+                    mask={Masks.DATE_DDMMYYYY}
+                    type="mask"
                   />
                   {errors.bornDate && touched.bornDate && (
                     <View style={globalStyle.errorContainer}>

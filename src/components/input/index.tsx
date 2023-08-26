@@ -12,6 +12,7 @@ function Input({
   width = "90%",
   height = 45,
   error = false,
+  mask,
   ...rest
 }: Props) {
   const [viewPassword, setViewPassword] = useState<Boolean>(false);
@@ -74,7 +75,7 @@ function Input({
           />
         </View>
       )}
-      {type === "date" && (
+      {type === "mask" && (
         <View
           style={[
             styles.container,
@@ -86,9 +87,8 @@ function Input({
           <MaskInput
             {...rest}
             style={[styles.input]}
-            mask={Masks.DATE_DDMMYYYY}
-            keyboardType="numeric"
-            placeholder="Doğum Tarihi"
+            mask={mask}
+            placeholder={placeholder}
           />
         </View>
       )}

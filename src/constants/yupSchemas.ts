@@ -4,7 +4,7 @@ const getCharacterValidationError = (str) => {
   return `*Şifreniz en az 1 ${str} barındırmalı!`;
 };
 
-const validationSchema = Yup.object().shape({
+const registerSchema = Yup.object().shape({
   firstName: Yup.string()
     .matches(/^[aA-zZ\s]+$/, "Yanlızca Harf kullanabilirsiniz!")
     .min(3, "*Adınız en az 3 harf olmalıdır!")
@@ -38,4 +38,24 @@ const validationSchema = Yup.object().shape({
     .oneOf([Yup.ref("password"), null], "Şifreler Eşleşmiyor!")
     .required("*Bu Alanı Boş Bırakamazsınız!"),
 });
-export default validationSchema;
+
+const paymentSchema = Yup.object().shape({
+  cardName: Yup.string().required("*Bu Alanı Boş Bırakamazsınız!"),
+  cardNumber: Yup.number().test(
+    "len",
+    "*Kart Numarası 16 hane olmak zorundadır!",
+    (val) => String(val).length === 16
+  ),
+  expireDate: Yup.string().test(
+    "len",
+    "*Son Kullanım Tarihi 4 hane olmak zorundadır!",
+    (val) => String(val).length === 5
+  ),
+  cvc: Yup.string().test(
+    "len",
+    "*CVC/CVV 3 hane olmak zorundadır!",
+    (val) => String(val).length === 3
+  ),
+});
+
+export { registerSchema, paymentSchema };

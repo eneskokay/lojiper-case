@@ -23,7 +23,6 @@ export const trips = [
     emptySeats: 10,
     price: 150,
   },
-
   {
     from: "Konya",
     to: "Antalya",
