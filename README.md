@@ -1,15 +1,10 @@
 # lojiper-case
+Ticket booking application coded with React-Native
 
 Ticket booking application coded with React-Native.
 
 ## Getting Started
 
-<<<<<<< HEAD
-First install all the dependencies and start the app:
-<sub>nmp install</sub>
-Then run the app:
-<sub>npx expo start</sub>
-=======
 Install dependencies and start the app:
 ```
 nmp install
@@ -27,4 +22,3 @@ This app requires:
 ## Usage
 When you open the app at first you're gonna see a login page. It searchs data in AsyncStorage so you have to register first. Then you can sign in.
 In search trip page, If you choose single trip, You have to select from Konya to Antalya in 9th of Agust 2023 . Or if you choose return trip, You have to select from Konya to Antalya, in 9th to 21th of Agust 2023. Then you can choose the trip.
->>>>>>> 1dc5b28433937e1c2a46af5382c6850ac30dcea5
