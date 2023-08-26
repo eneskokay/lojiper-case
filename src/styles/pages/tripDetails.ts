@@ -1,10 +1,11 @@
 import { StyleSheet } from "react-native";
 import { getParsedCommandLineOfConfigFile } from "typescript";
+import { mainColor } from "../theme/colors";
 
 const tripDetailsStyle = StyleSheet.create({
   busContainer: {
     width: 340,
-    height: 140,
+    height: 150,
     backgroundColor: "white",
     borderRadius: 8,
     borderWidth: 2,
@@ -13,6 +14,7 @@ const tripDetailsStyle = StyleSheet.create({
     justifyContent: "space-between",
     borderColor: "gray",
     marginVertical: 8,
+    padding: 5,
   },
   top: { display: "flex", flexDirection: "row" },
   bottom: { display: "flex", flexDirection: "row" },
@@ -40,6 +42,15 @@ const tripDetailsStyle = StyleSheet.create({
     display: "flex",
     flexDirection: "row",
     padding: 10,
+  },
+  priceContainer: {
+    backgroundColor: mainColor,
+    width: 340,
+    height: 100,
+    borderRadius: 16,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

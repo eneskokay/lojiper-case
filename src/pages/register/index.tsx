@@ -204,6 +204,7 @@ function Register({ navigation }) {
                   value={values.gender}
                   setValue={setFieldValue}
                   title={"Cinsiyetinizi Seçin"}
+                  formik={true}
                 />
                 {errors.gender && (
                   <View style={{ marginTop: 5 }}>

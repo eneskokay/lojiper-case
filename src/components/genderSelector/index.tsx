@@ -6,7 +6,13 @@ import React from "react";
 import { Text, View, TouchableOpacity } from "react-native";
 import Icon from "../icon";
 
-function GenderSelector({ value, setValue, title }: Props) {
+function GenderSelector({
+  value,
+  setValue,
+  title,
+  formik,
+  disabled = false,
+}: Props) {
   return (
     <View style={styles.gendersContainer}>
       {title && (
@@ -25,19 +31,19 @@ function GenderSelector({ value, setValue, title }: Props) {
 
       <View style={styles.genders}>
         <TouchableOpacity
-          disabled={setValue ? false : true}
+          disabled={disabled}
           style={[
             styles.genderSelector,
             shadow.black,
-            value === "male" && {
+            value === "man" && {
               backgroundColor: mainColor,
             },
           ]}
-          onPress={() => setValue("gender", "male")}
+          onPress={() => (formik ? setValue("gender", "man") : setValue("man"))}
         >
           <Icon
             name={"man"}
-            fill={value === "male" ? "white" : "gray"}
+            fill={value === "man" ? "white" : "gray"}
             width={35}
             height={35}
           />
@@ -46,16 +52,18 @@ function GenderSelector({ value, setValue, title }: Props) {
           style={[
             styles.genderSelector,
             shadow.black,
-            value === "female" && {
+            value === "woman" && {
               backgroundColor: mainColor,
             },
           ]}
-          disabled={setValue ? false : true}
-          onPress={() => setValue("gender", "female")}
+          disabled={disabled}
+          onPress={() =>
+            formik ? setValue("gender", "woman") : setValue("woman")
+          }
         >
           <Icon
             name={"woman"}
-            fill={value === "female" ? "white" : "gray"}
+            fill={value === "woman" ? "white" : "gray"}
             width={35}
             height={35}
           />
