@@ -15,6 +15,7 @@ import texts from "@/styles/theme/texts";
 
 function Payment({ route, navigation }) {
   const [spinnerState, setSpinnerState] = useState<boolean>(false);
+  const totalPrice = route.params.totalPrice;
   useEffect(() => {
     if (spinnerState) {
       const timeout = setTimeout(() => {
@@ -36,7 +37,6 @@ function Payment({ route, navigation }) {
       validationSchema={paymentSchema}
       onSubmit={async (values, { setFieldError }) => {
         setSpinnerState(true);
-        console.log("naber");
       }}
     >
       {({
@@ -73,6 +73,9 @@ function Payment({ route, navigation }) {
               { paddingVertical: 16 },
             ]}
           >
+            <Text style={[texts.text_400, { color: "gray" }]}>
+              Ödenecek Tutar: {totalPrice}TL
+            </Text>
             <View style={globalStyle.inputContainer}>
               <Input
                 placeholder="Kart Üzerindeki İsim"
@@ -159,7 +162,6 @@ function Payment({ route, navigation }) {
             <TouchableOpacity
               style={[globalStyle.button, { marginTop: 20 }]}
               onPress={() => {
-                console.log("errors:", errors);
                 handleSubmit();
               }}
             >

@@ -123,8 +123,6 @@ function SearchTrip({ navigation }) {
                   allowRangeSelection={
                     values.tripType === "single" ? false : true
                   }
-                  // minDate={"08-25-23"}
-                  // maxDate={maxDate}
                   weekdays={["Pzt", "Sal", "Çar", "Per", "Cum", "Cmt", "Paz"]}
                   months={[
                     "Ocak",

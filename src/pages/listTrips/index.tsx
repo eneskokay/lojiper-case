@@ -18,10 +18,11 @@ function ListTrips({ route, navigation }) {
         },
       ]}
     >
-      {availableTrips.map((item: itemType) => (
+      {availableTrips.map((item: itemType, index) => (
         <TicketCard
           item={item}
           clickable={true}
+          key={index}
           navigationFunc={() =>
             navigation.navigate("tripDetails", { id: item.id })
           }

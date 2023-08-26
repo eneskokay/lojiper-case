@@ -24,6 +24,7 @@ function RadioButton({ buttons, setButtons, handleChange }: Props) {
         <TouchableOpacity
           style={styles.buttonContainer}
           onPress={() => handlePress(index)}
+          key={index}
         >
           <View
             style={[

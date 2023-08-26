@@ -109,10 +109,11 @@ function TripDetails({ route, navigation }) {
 
         <View style={styles.busContainer}>
           <View style={styles.top}>
-            {seatsData.top.map((itemArray) => (
-              <View style={styles.seatsContainer}>
-                {itemArray.map((item) => (
+            {seatsData.top.map((itemArray, index) => (
+              <View style={styles.seatsContainer} key={index}>
+                {itemArray.map((item, key) => (
                   <TouchableOpacity
+                    key={key}
                     disabled={item.type === "empty" ? false : true}
                     style={[shadow.black, styles.seat]}
                     onPress={() =>
@@ -139,10 +140,11 @@ function TripDetails({ route, navigation }) {
             ))}
           </View>
           <View style={styles.bottom}>
-            {seatsData.bottom.map((itemArray) => (
-              <View style={styles.seatsContainer}>
-                {itemArray.map((item) => (
+            {seatsData.bottom.map((itemArray, index) => (
+              <View style={styles.seatsContainer} key={index}>
+                {itemArray.map((item, key) => (
                   <TouchableOpacity
+                    key={key}
                     disabled={item.type === "empty" ? false : true}
                     style={[shadow.black, styles.seat]}
                     onPress={() =>

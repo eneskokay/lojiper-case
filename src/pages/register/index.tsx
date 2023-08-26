@@ -141,6 +141,7 @@ function Register({ navigation }) {
                     onBlur={handleBlur("bornDate")}
                     mask={Masks.DATE_DDMMYYYY}
                     type="mask"
+                    keyboardType="numeric"
                   />
                   {errors.bornDate && touched.bornDate && (
                     <View style={globalStyle.errorContainer}>
